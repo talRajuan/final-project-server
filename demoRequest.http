@@ -1,0 +1,57 @@
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "name": "moshe",
+    "email": "moshe@gmail.com",
+    "password": "12345678",
+    "biz": "true"
+}
+
+### test auth
+
+POST http://localhost:3001/api/auth
+Content-Type: application/json
+
+{
+    "email": "moshe@gmail.com",
+    "password": "12345678"
+
+}
+
+###
+
+get http://localhost:3001/api/users/me?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgwZjUzODU1ZDA5MGNmN2VjNzRhNTAiLCJiaXoiOnRydWUsImVtYWlsIjoibW9zaGVAZ21haWwuY29tIiwiaWF0IjoxNjUyNjE4NTgzfQ.nh2b33-CrOiwdNqfZrckHD-edtOJ1o2B7K4nvJt_nSQ
+
+###
+
+POST  http://localhost:3001/api/cards
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgwZjUzODU1ZDA5MGNmN2VjNzRhNTAiLCJiaXoiOnRydWUsImVtYWlsIjoibW9zaGVAZ21haWwuY29tIiwiaWF0IjoxNjUyNjI2OTc4fQ.Zk6s6gqk7ZG4n28tSt5fiYhj3JQYTm1YiNwEMYhqk1M
+Content-Type: application/json
+
+{
+    "bizName": "moshebiznass",
+    "bizDescription": "moshe make you happy",
+    "bizAddress": "holon sokolov 60",
+    "bizPhone": "0586889499"
+}
+
+
+###
+get http://localhost:3001/api/cards?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgwZjUzODU1ZDA5MGNmN2VjNzRhNTAiLCJiaXoiOnRydWUsImVtYWlsIjoibW9zaGVAZ21haWwuY29tIiwiaWF0IjoxNjUyNjE4NTgzfQ.nh2b33-CrOiwdNqfZrckHD-edtOJ1o2B7K4nvJt_nSQ
+
+
+
+###6280f5b255d090cf7ec74a55###
+
+
+get http://localhost:3001/api/cards
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgwZjUzODU1ZDA5MGNmN2VjNzRhNTAiLCJiaXoiOnRydWUsImVtYWlsIjoibW9zaGVAZ21haWwuY29tIiwiaWF0IjoxNjUyNjE4NTgzfQ.nh2b33-CrOiwdNqfZrckHD-edtOJ1o2B7K4nvJt_nSQ
+###
+###
+
+
+
+
+DELETE  http://localhost:3001/api/cards/628144075dc41bfc61a4b354
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgwZjUzODU1ZDA5MGNmN2VjNzRhNTAiLCJiaXoiOnRydWUsImVtYWlsIjoibW9zaGVAZ21haWwuY29tIiwiaWF0IjoxNjUyNjI2OTc4fQ.Zk6s6gqk7ZG4n28tSt5fiYhj3JQYTm1YiNwEMYhqk1M
