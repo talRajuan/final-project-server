@@ -9,6 +9,7 @@ const authRouter = require("./routes/auth");
 const cardsRouter = require("./routes/card");
 const allCardsRouter = require("./routes/allCards");
 
+
 const app = express();
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true })); //parse body that contain form data
@@ -31,6 +32,7 @@ app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/allcards", allCardsRouter);
 app.use("/api/cards", cardsRouter);
+
 
 app.get("/myapi", (req, res) => {
   res.json({ msg: "ok" });

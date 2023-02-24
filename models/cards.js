@@ -41,6 +41,12 @@ const cardSchema = new mongoose.Schema({
             minlength: 3,
             maxlength: 9_999_999_999
     },
+    moreInfo: {
+            type: String,
+            required: false,
+            minLength: 1,
+            maxlength: 9_999_999_999
+    },
     user_id:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -50,12 +56,13 @@ const cardSchema = new mongoose.Schema({
 
 })
 
-const Card = mongoose.model('card', cardSchema);
+const Card = mongoose.model('Card', cardSchema);
 
 const cardjoiSchema = joi.object({
 teacherName: Joi.string().min(2).max(255).required(),
     teacherDescription: Joi.string().min(2).max(1024).required(),
     classAddress: Joi.string().min(2).max(500).required(),
+    moreInfo: Joi.string().min(1).max(9_999_999_999),
     teacherPhone: Joi.string()
     .min(9)
     .max(15)

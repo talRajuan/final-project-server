@@ -1,0 +1,17 @@
+
+
+@local=http://localhost:3001/api/users
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M3YzExNmU3MjE5OTVmMWQ3MTE1YTgiLCJiaXoiOmZhbHNlLCJlbWFpbCI6ImF2aXJhbkBnbWFpbC5jb20iLCJpYXQiOjE2NzQzMTgzNTZ9.l3lnbqV6HUOz8rMraXvF6sNuXWPHiqO4C-_Mw5pcHcI
+
+GET {{local}}/add-favorite/63cc0f02e665e80e11612e8d
+x-auth-token: {{token}}
+
+###
+
+GET {{local}}/user-favorites
+x-auth-token: {{token}}
+
+###
+
+GET {{local}}/remove-favorite/63cc0f02e665e80e11612e8d
+x-auth-token: {{token}}

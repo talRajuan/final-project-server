@@ -3,10 +3,12 @@ const _ = require('lodash');
 const auth = require('../middleware/auth');
 const {Card, validateCard, generateTeacherNumber} = require('../models/cards')
 
+
 cardsRouter.post('/',auth, async (req,res)=>{
-   console.log(req);
+ 
     const {error} = validateCard(req.body);
     if (error){
+        console.log("whayyyyy???????--------------",error);
         return res.status(400).json({message: error.details.map(d=>d.message)})
     }
     let card = new Card({
@@ -20,15 +22,18 @@ cardsRouter.post('/',auth, async (req,res)=>{
     card = await card.save();
     res.json(card)
 
-   
 })
 
 
+
+
+
 cardsRouter.get('/', auth, async (req, res) => {
-     console.log('request',req.user);
+    console.log('request2',req.user);
     const cards = await Card.find({
         user_id: req.user._id
     })
+    console.log("cards", cards);
     res.json(cards)
 })
 

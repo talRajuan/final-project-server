@@ -30,7 +30,11 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
     },
 
-    cards: Array
+    favorites: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Card"
+    }]
+
 })
 
 //add method to the schema
@@ -52,13 +56,6 @@ const schema = joi.object({
     biz: joi.boolean().required()
 })
 
-const userCardschema = joi.object({
-    cards: joi.array().min(1).required()
-})
-
-function validateCards(data){
-    return userCardschema.validate(data)
-}
 
 function validateUser(user) {
     return schema.validate(user, {
@@ -72,5 +69,4 @@ const User = mongoose.model('User', userSchema);
 module.exports = {
     User,
     validateUser,
-    validateCards
 };
