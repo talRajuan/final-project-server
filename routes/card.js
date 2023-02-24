@@ -26,7 +26,9 @@ cardsRouter.post('/',auth, async (req,res)=>{
 
 cardsRouter.get('/', auth, async (req, res) => {
      console.log('request',req.user);
-    const cards = await Card.find({user_id:req.user._id})
+    const cards = await Card.find({
+        user_id: req.user._id
+    })
     res.json(cards)
 })
 

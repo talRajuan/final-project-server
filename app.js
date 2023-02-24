@@ -7,6 +7,7 @@ const usersRouter = require("./routes/usersR");
 const connect = require("./utils/connect-db");
 const authRouter = require("./routes/auth");
 const cardsRouter = require("./routes/card");
+const allCardsRouter = require("./routes/allCards");
 
 const app = express();
 app.use(morgan("dev"));
@@ -28,6 +29,7 @@ connect()
 
 app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/allcards", allCardsRouter);
 app.use("/api/cards", cardsRouter);
 
 app.get("/myapi", (req, res) => {

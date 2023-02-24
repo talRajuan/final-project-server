@@ -2,6 +2,7 @@ const Joi = require("joi");
 const { User } = require("../models/users");
 const authRouter = require("express").Router();
 const bcrypt = require("bcrypt");
+const auth = require('../middleware/auth');
 
 const authSchema = Joi.object({
   email: Joi.string().email().max(64).required(),
@@ -11,11 +12,9 @@ const authSchema = Joi.object({
 authRouter.post("/", async (req, res) => {
   const validate = (body) => authSchema.validate(body);
   const { error } = validate(req.body);
-  //   const validatedValue = authSchema.validate(req.body);
-  //   console.log(validatedValue);
-  //   return;
+  
   if (error) {
-    // return res.json({ message: err.details.map((d) => d.message) });
+    
     return res.json({ error });
   }
   const user = await User.findOne({ email: req.body.email });
@@ -36,5 +35,15 @@ authRouter.post("/", async (req, res) => {
     biz: user.biz,
   });
 });
+
+authRouter.post("/loginbytoken", auth, async (req, res) => {
+  const user = await User.findOne({email: req.user.email});
+  if(!user){
+    return res.status(400).json({err:`invalid email or password`});
+  }
+  res.json({
+    token: true
+  });
+})
 
 module.exports = authRouter;
